@@ -3,7 +3,6 @@ const User = require('../models/user');
 module.exports.profile=function(req,res){
     return res.render('users_profile',{
         title: "Profile"
-        
     })
 }
 
@@ -58,5 +57,5 @@ module.exports.create = function(req,res){
 }
 
 module.exports.createSession = function(req,res){
-    //todo later
+    return res.redirect('/');
 }
