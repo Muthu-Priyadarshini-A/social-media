@@ -1,0 +1,36 @@
+header{
+    nav{
+       background-color: dodgerblue;
+       display: flex;
+       justify-content: space-between;
+        color: antiquewhite;
+        box-shadow: 1px 1px 1px 1px lightgrey;
+        padding: 0 10px;
+
+       .logo{
+        margin: 5px;
+        font-size: large;
+        font-weight: bold;
+       }
+
+       .auth-links{
+            ul{
+                display: flex;
+                // align-items: center;
+                margin: 5% 5px;
+
+                li{
+                    list-style: none;
+                    margin-right: 10px;
+                    font-size: large;
+                }
+            }
+       }
+
+
+       a{
+        color: antiquewhite;
+        text-decoration: none ;
+       }
+    }
+}

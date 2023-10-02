@@ -5,8 +5,33 @@
     <body>
         <%-include('_header');%> -->
         <!-- only the variable part of each page should be present and remove other tags -->
-        <link rel="stylesheet" href="/css/home.css">
+        <!-- <link rel="stylesheet" href="/css/home.css"> -->
         <h1>Codiel/<%=title%></h1>
+
+        <section id="feed-posts"> 
+            <h4>Posts</h4>
+            <%if(locals.user){%>
+            <form action="/posts/create" id="new-post-form" method="post">
+                <textarea name="content"  cols="30" rows="5" placeholder="Type here..."></textarea>
+                <input type="submit" value="Post">
+            </form>
+            <%}%>
+            <div id="posts-list-container">
+
+                <ul>
+                    <%for(post of posts){%>
+                        <li>
+                            <p>
+                                <%=post.content%>
+                                <br>
+                                <%=post.user.name%>
+                            </p>
+                        </li>
+                        <%}%>
+                </ul>
+
+            </div>
+        </section>
 
         <!-- <%-include('_footer');%>
     </body>

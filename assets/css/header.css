@@ -1,0 +1,21 @@
+header nav {
+  background-color: dodgerblue;
+  display: flex;
+  justify-content: space-between;
+  color: antiquewhite;
+  box-shadow: 1px 1px 1px 1px lightgrey;
+  padding: 0 10px; }
+  header nav .logo {
+    margin: 5px;
+    font-size: large;
+    font-weight: bold; }
+  header nav .auth-links ul {
+    display: flex;
+    margin: 5% 5px; }
+    header nav .auth-links ul li {
+      list-style: none;
+      margin-right: 10px;
+      font-size: large; }
+  header nav a {
+    color: antiquewhite;
+    text-decoration: none; }
