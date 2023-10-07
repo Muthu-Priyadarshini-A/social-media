@@ -2,10 +2,19 @@ const Post = require('../models/post')
 const Comment = require('../models/comment')
 module.exports.create = async function(req, res){
     try{
-        await Post.create({
+        let post = await Post.create({
             content: req.body.content,
             user: req.user._id
         });
+
+        if(req.xhr){
+            return res.status(200).json({
+                data:{
+                    post: post
+                },
+                message: "Post created!!"
+            });
+        }
 
             req.flash('success','Post published!')
             return res.redirect('back');
@@ -30,6 +39,14 @@ module.exports.destroy = async function (req, res) {
             //delete the post
             //go inside comments and search all the comments belonging to a particular post and delete them
             await Comment.deleteMany({ post: req.params.id });
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        post_id: req.params.id
+                    },
+                    message: "Post deleted"
+                })
+            }
             // after the post and all its associated comments have been deleted from the database
             //we check if the req object is ajax/jquery req object
             // if(req.xhr){
