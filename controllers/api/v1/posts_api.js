@@ -27,7 +27,7 @@ module.exports.destroy = async function (req, res) {
         //find a post by id and store it in a post variable
         let post = await Post.findById(req.params.id);
         // .id means converting the object id into string
-        // if (post.user == req.user.id) {
+        if (post.user == req.user.id) {
             //if the userId of the user who created the post is same as the id of user who is logged in only then delete the post
             post.deleteOne();
             //delete the post
@@ -56,12 +56,14 @@ module.exports.destroy = async function (req, res) {
             return res.status(200).json({
                 message: "Posts and associated comments deleted successfully"
             });
-        // }
-        // //if no post is found for that id, send the control back
-        // else {
+        }
+        //if no post is found for that id, send the control back
+        else {
         //     req.flash('error','Post cannot be deleted by you!')
-        //     return res.redirect('back');
-        // }
+            return res.json(401, {
+                message: "You cannot delete this post!"
+            })
+        }
 
     } catch (err) {
         // req.flash('error',err)
